@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, intial-scale=1.0">
+		<meta name="viewport" content="width=device-width">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<title>Local Save Trial</title>
 		<style>
@@ -45,10 +45,10 @@
 	<br><br>
 	
 	
-	<table id="CatTable" border="2">
+	<table id="CatTable" border="2" style.display="none">
 		<td>
 			<tr><input id="Seat1" type="button" value="CategoryA" onclick="catAction(this.value);" class="block"/></tr>
-			<tr><input id="Seat1" type="button" value="CategoryB" onclick="cattAction(this.value);" class="block"/></tr>
+			<tr><input id="Seat1" type="button" value="CategoryB" onclick="catAction(this.value);" class="block"/></tr>
 
 			
 		</td>
@@ -58,11 +58,11 @@
 	
 	<table id="EventTable" border="1">
 		<td>
-			<tr><input id="clickMe" type="button" value="Seat 1A" onclick="doFunction(this.value);" class="block"/></tr>
-			<tr><input id="clickMe" type="button" value="Seat 1A" onclick="doFunction(this.value);" class="block"/></tr>
-			<tr><input id="clickMe" type="button" value="Seat 1A" onclick="doFunction(this.value);" class="block"/></tr>
-			<tr><input id="clickMe" type="button" value="Seat 1A" onclick="doFunction(this.value);" class="block"/></tr>
-			<tr><input id="clickMe" type="button" value="Seat 1A" onclick="doFunction(this.value);" class="block"/></tr>
+			<tr><input id="clickMe" type="button" value="Event 1" onclick="eventAction(this.value);" class="block"/></tr>
+			<tr><input id="clickMe" type="button" value="Event 2" onclick="eventAction(this.value);" class="block"/></tr>
+			<tr><input id="clickMe" type="button" value="Event 3" onclick="eventAction(this.value);" class="block"/></tr>
+			<tr><input id="clickMe" type="button" value="Event 4" onclick="eventAction(this.value);" class="block"/></tr>
+			<tr><input id="clickMe" type="button" value="Event 5" onclick="eventAction(this.value);" class="block"/></tr>
 			
 		</td>
 	</table>
@@ -78,78 +78,75 @@
 	<p id="demo"></p>
 			
 	<script>
-		const a1 = document.getElementById("a1")
-		const blob1 = new Blob(["Hello", "download!"], {type: " text/plain" })
-		a1.href = URL.createObjectURL(blob1)
+
 		
 		
-		window.onload = function(){  
+		var dataOut="";
+		var lineTime;
+		var lineSeat;
+		var lineCat;
+		var lineEvent;
 		
-		CatTable.display="none"
-		}
+	
+		
+		<!-- window.onload = function(){   -->
+		<!-- SeatTable.style.dispay = "none"; -->
+		<!-- SeatTable.visibility = "hidden"; -->
+		
+		<!-- CatTable.style.display="none"; -->
+		<!-- } -->
 		
 		function seatAction(buttonClicked) {
 		
 		var today = new Date();
 		var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 		var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-		var dateTime = date+' '+time;
-		window.alert("hello" + " " +buttonClicked + dateTime);
-		//window.alert(this.value);
-		document.getElementById("demo").innerHTML = dateTime;
-		SeatTable.display="none"
 		
-
 		
-		//window.alert("hello" + " " +buttonClicked dateTime);
+		lineDate = ""
+		lineTime= "";
+		lineSeat= ""
+		lineCat= ""
+		lineEvent= ""
+		
+	
+	
+		
+		
+		lineDate=date;
+		lineTime=time;		
+		lineSeat=buttonClicked;
+		console.log("Registed Seat Click: " +lineSeat + "@" + lineTime);
 		}
 		
 		function catAction(buttonClicked) {
 		
-		window.alert("Category Selected: " +buttonClicked);
-		SeatTable.style.visibility = "visible"
+		
+		lineCat=buttonClicked
+		console.log("Category Selected: " +lineSeat + "@" + lineTime + "-" + lineCat);
+		
 		}
+		
+		function eventAction(buttonClicked) {
+		
+		lineEvent=buttonClicked
+		console.log("Category Selected: " +lineSeat + " @ " + lineTime + " - " + lineCat + " -> " + lineEvent)
+		
+		dataOut=dataOut + lineDate + "," + lineTime + "," + lineSeat + "," + lineCat + "," + lineEvent + "\n"
+		
+		console.log("dataOut : \n" +dataOut)
+		blob1=new Blob([ dataOut ], {type: " text/plain" })
+		a1.href = URL.createObjectURL(blob1)
+		
+		}
+		
+		
+		const a1 = document.getElementById("a1")
+		var blob1 = new Blob([], {type: " text/plain" })
+		a1.href = URL.createObjectURL(blob1)
 	</script>
 </body>
 
 </html>
 		
 	
-
-
-
-
-<!-- 	<label>Filename</label>
-	<input tpye="text" id="filename" value="hello.txt"/>
-	
-	<br/><br/><br/>
-
-	<label for="text-val">File content<label>
-	<textarea id="text-val" rows="4">This will be the content of our example</textarea>
-
-	<br/>
-
-	<button type="button" id="download-btn">
-		Dowload the file
-	</button>
-
-	<script>
-		function download(filename, text) {
-		  var element = document.createElement('a');
-		  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-		  element.setAttribute('download', filename);
-
-		  element.style.display = 'none';
-		  document.body.appendChild(element);
-
-		  element.click();
-
-		  document.body.removeChild(element);
-		}
-		
-		
-	// Start file download.
-	download("hello.txt","This is the content of my file :)");
-</script> -->
-
-			
