@@ -34,38 +34,58 @@
 	</head>
 
 <body>
-	<table id="SeatTable" border="2">
-		<tr>
-			<td><input id="Seat1" type="button" value="Seat 1A" onclick="seatAction(this.value);" class="block"/></td>
-		</tr>
-		<tr>
-			<td><input id="Seat1" type="button" value="Seat 2A" onclick="seatAction(this.value);" class="block"/></td>
-		</tr>
-	</table>
-	<br><br>
+	<div id="seatDiv">
+		<table id="seatTable" border="2">
+			<tr>
+				<td><input id="Seat1" type="button" value="Seat 1A" onclick="seatAction(this.value);" class="block"/></td>
+				<td><input id="Seat2" type="button" value="Seat 1B" onclick="seatAction(this.value);" class="block"/></td>
+				<td><input id="Seat3" type="button" value="Seat 1C" onclick="seatAction(this.value);" class="block"/></td>
+				<td>&emsp; &emsp; &emsp;</td>
+				<td><input id="Seat4" type="button" value="Seat 1A" onclick="seatAction(this.value);" class="block"/></td>
+				<td><input id="Seat5" type="button" value="Seat 1B" onclick="seatAction(this.value);" class="block"/></td>
+				<td><input id="Seat6" type="button" value="Seat 1C" onclick="seatAction(this.value);" class="block"/></td>							
+			</tr>
+			<tr>
+				<td><input id="Seat7" type="button" value="Seat 2A" onclick="seatAction(this.value);" class="block"/></td>
+				<td><input id="Seat8" type="button" value="Seat 2B" onclick="seatAction(this.value);" class="block"/></td>
+				<td><input id="Seat9" type="button" value="Seat 2C" onclick="seatAction(this.value);" class="block"/></td>
+				<td>&emsp; &emsp; &emsp;</td>
+				<td><input id="Seat10" type="button" value="Seat 2A" onclick="seatAction(this.value);" class="block"/></td>
+				<td><input id="Seat11" type="button" value="Seat 2B" onclick="seatAction(this.value);" class="block"/></td>
+				<td><input id="Seat12" type="button" value="Seat 2C" onclick="seatAction(this.value);" class="block"/></td>
+			</tr>
+		</table>
+		<br><br>
+	</div>
 	
-	
-	<table id="CatTable" border="2" style.display="none">
-		<td>
-			<tr><input id="Seat1" type="button" value="CategoryA" onclick="catAction(this.value);" class="block"/></tr>
-			<tr><input id="Seat1" type="button" value="CategoryB" onclick="catAction(this.value);" class="block"/></tr>
+	<div id="catDiv">
+		<table id="catTable" border="2" style.display="none">
+			<td>
+				<tr><input id="CatA" type="button" value="CategoryA" onclick="catAction(this.value);" class="block"/></tr>
+				<tr><input id="CatB" type="button" value="CategoryB" onclick="catAction(this.value);" class="block"/></tr>
+				<tr><input id="CatC" type="button" value="CategoryC" onclick="catAction(this.value);" class="block"/></tr>
+				<tr>&emsp;</tr>
+				<tr><td width="99%"><input id="CommentText" type="text" style="width:100%"></td><td style="white-space: nowrap;"><input id="CommentButton" type="button" value="Comment" onclick="submitComment(CommentText.value);" style.float="right"/><td></tr>
 
-			
-		</td>
-	</table>
-	<br><br>
+				
+			</td>
+		</table>
+		<br><br>
+	</div>
 	
-	
-	<table id="EventTable" border="1">
-		<td>
-			<tr><input id="clickMe" type="button" value="Event 1" onclick="eventAction(this.value);" class="block"/></tr>
-			<tr><input id="clickMe" type="button" value="Event 2" onclick="eventAction(this.value);" class="block"/></tr>
-			<tr><input id="clickMe" type="button" value="Event 3" onclick="eventAction(this.value);" class="block"/></tr>
-			<tr><input id="clickMe" type="button" value="Event 4" onclick="eventAction(this.value);" class="block"/></tr>
-			<tr><input id="clickMe" type="button" value="Event 5" onclick="eventAction(this.value);" class="block"/></tr>
-			
-		</td>
-	</table>
+	<div id="eventDiv">
+		<table id="eventTable" border="1">
+			<td>
+				<tr><input id="Ev1" type="button" value="Event 1" onclick="eventAction(this.value);" class="block"/></tr>
+				<tr><input id="Ev2" type="button" value="Event 2" onclick="eventAction(this.value);" class="block"/></tr>
+				<tr><input id="Ev3" type="button" value="Event 3" onclick="eventAction(this.value);" class="block"/></tr>
+				<tr><input id="Ev4" type="button" value="Event 4" onclick="eventAction(this.value);" class="block"/></tr>
+				<tr><input id="Ev5" type="button" value="Event 5" onclick="eventAction(this.value);" class="block"/></tr>
+				
+				
+			</td>
+		</table>
+	</div>
 	
 	<table id="downloadLink" border="1" >
 		<tr>
@@ -89,12 +109,11 @@
 		
 	
 		
-		<!-- window.onload = function(){   -->
-		<!-- SeatTable.style.dispay = "none"; -->
-		<!-- SeatTable.visibility = "hidden"; -->
-		
-		<!-- CatTable.style.display="none"; -->
-		<!-- } -->
+		window.onload = function(){  
+			seatDiv.style.display = "block";
+			catDiv.style.display = "none";
+			eventDiv.style.display = "none";
+		}
 		
 		function seatAction(buttonClicked) {
 		
@@ -109,14 +128,14 @@
 		lineCat= ""
 		lineEvent= ""
 		
-	
-	
-		
-		
 		lineDate=date;
 		lineTime=time;		
 		lineSeat=buttonClicked;
 		console.log("Registed Seat Click: " +lineSeat + "@" + lineTime);
+		
+		seatDiv.style.display = "none";
+		catDiv.style.display = "block";
+		eventDiv.style.display = "none";
 		}
 		
 		function catAction(buttonClicked) {
@@ -125,6 +144,10 @@
 		lineCat=buttonClicked
 		console.log("Category Selected: " +lineSeat + "@" + lineTime + "-" + lineCat);
 		
+		seatDiv.style.display = "none";
+		catDiv.style.display = "none";
+		eventDiv.style.display = "block";
+		
 		}
 		
 		function eventAction(buttonClicked) {
@@ -132,14 +155,33 @@
 		lineEvent=buttonClicked
 		console.log("Category Selected: " +lineSeat + " @ " + lineTime + " - " + lineCat + " -> " + lineEvent)
 		
-		dataOut=dataOut + lineDate + "," + lineTime + "," + lineSeat + "," + lineCat + "," + lineEvent + "\n"
+		dataOut=dataOut + lineDate + "," + lineTime + "," + lineSeat + "," + lineCat + "," + lineEvent + "," + "\n"
 		
 		console.log("dataOut : \n" +dataOut)
 		blob1=new Blob([ dataOut ], {type: " text/plain" })
 		a1.href = URL.createObjectURL(blob1)
 		
+		seatDiv.style.display = "block";
+		catDiv.style.display = "none";
+		eventDiv.style.display = "none";
+		
 		}
 		
+		function submitComment(comText) {
+
+		
+		dataOut=dataOut + lineDate + "," + lineTime + "," + lineSeat + ","+ "," + "," +comText + "\n";
+		
+		console.log("dataOut : \n" +dataOut);
+		blob1=new Blob([ dataOut ], {type: " text/plain" });
+		a1.href = URL.createObjectURL(blob1);
+		
+		CommentText.value="";
+		
+		seatDiv.style.display = "block";
+		catDiv.style.display = "none";
+		eventDiv.style.display = "none";
+		}
 		
 		const a1 = document.getElementById("a1")
 		var blob1 = new Blob([], {type: " text/plain" })
