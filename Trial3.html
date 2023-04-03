@@ -1,0 +1,155 @@
+<!DOCTPYE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, intial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Local Save Trial</title>
+		<style>
+		
+		table {
+		  border-collapse: collapse;
+		  width: 100%;
+		  border: 1px solid #ddd;
+		}
+
+			.block {
+			  display: block;
+			  width: 100%;
+			  border: none;
+			  background-color: #04AA6D;
+			  color: white;
+			  padding: 14px 28px;
+			  font-size: 16px;
+			  cursor: pointer;
+			  text-align: center;
+			}
+
+			.block:hover {
+			  background-color: #ddd;
+			  color: black;
+			}
+		</style>
+
+	</head>
+
+<body>
+	<table id="SeatTable" border="2">
+		<tr>
+			<td><input id="Seat1" type="button" value="Seat 1A" onclick="seatAction(this.value);" class="block"/></td>
+		</tr>
+		<tr>
+			<td><input id="Seat1" type="button" value="Seat 2A" onclick="seatAction(this.value);" class="block"/></td>
+		</tr>
+	</table>
+	<br><br>
+	
+	
+	<table id="CatTable" border="2">
+		<td>
+			<tr><input id="Seat1" type="button" value="CategoryA" onclick="catAction(this.value);" class="block"/></tr>
+			<tr><input id="Seat1" type="button" value="CategoryB" onclick="cattAction(this.value);" class="block"/></tr>
+
+			
+		</td>
+	</table>
+	<br><br>
+	
+	
+	<table id="EventTable" border="1">
+		<td>
+			<tr><input id="clickMe" type="button" value="Seat 1A" onclick="doFunction(this.value);" class="block"/></tr>
+			<tr><input id="clickMe" type="button" value="Seat 1A" onclick="doFunction(this.value);" class="block"/></tr>
+			<tr><input id="clickMe" type="button" value="Seat 1A" onclick="doFunction(this.value);" class="block"/></tr>
+			<tr><input id="clickMe" type="button" value="Seat 1A" onclick="doFunction(this.value);" class="block"/></tr>
+			<tr><input id="clickMe" type="button" value="Seat 1A" onclick="doFunction(this.value);" class="block"/></tr>
+			
+		</td>
+	</table>
+	
+	<table id="downloadLink" border="1" >
+		<tr>
+			<td>
+				<br>
+				<a id="a1" download="Test.txt"> Download it! </a>
+			</td>
+		</tr>	
+	</table>
+	<p id="demo"></p>
+			
+	<script>
+		const a1 = document.getElementById("a1")
+		const blob1 = new Blob(["Hello", "download!"], {type: " text/plain" })
+		a1.href = URL.createObjectURL(blob1)
+		
+		
+		window.onload = function(){  
+		
+		CatTable.display="none"
+		}
+		
+		function seatAction(buttonClicked) {
+		
+		var today = new Date();
+		var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+		var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+		var dateTime = date+' '+time;
+		window.alert("hello" + " " +buttonClicked + dateTime);
+		//window.alert(this.value);
+		document.getElementById("demo").innerHTML = dateTime;
+		SeatTable.display="none"
+		
+
+		
+		//window.alert("hello" + " " +buttonClicked dateTime);
+		}
+		
+		function catAction(buttonClicked) {
+		
+		window.alert("Category Selected: " +buttonClicked);
+		SeatTable.style.visibility = "visible"
+		}
+	</script>
+</body>
+
+</html>
+		
+	
+
+
+
+
+<!-- 	<label>Filename</label>
+	<input tpye="text" id="filename" value="hello.txt"/>
+	
+	<br/><br/><br/>
+
+	<label for="text-val">File content<label>
+	<textarea id="text-val" rows="4">This will be the content of our example</textarea>
+
+	<br/>
+
+	<button type="button" id="download-btn">
+		Dowload the file
+	</button>
+
+	<script>
+		function download(filename, text) {
+		  var element = document.createElement('a');
+		  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+		  element.setAttribute('download', filename);
+
+		  element.style.display = 'none';
+		  document.body.appendChild(element);
+
+		  element.click();
+
+		  document.body.removeChild(element);
+		}
+		
+		
+	// Start file download.
+	download("hello.txt","This is the content of my file :)");
+</script> -->
+
+			
