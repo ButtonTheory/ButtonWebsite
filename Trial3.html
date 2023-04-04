@@ -13,23 +13,23 @@
 		  border: 1px solid #ddd;
 		}
 
-			.block {
-			  display: block;
-			  width: 100%;
-			  border: none;
-			  background-color: #04AA6D;
-			  color: white;
-			  padding: 14px 28px;
-			  font-size: 16px;
-			  cursor: pointer;
-			  text-align: center;
-			}
+		.block {
+		  display: block;
+		  width: 100%;
+		  border: 20px;
+		  background-color: #04AA6D;
+		  color: white;
+		  padding: 14px 28px;
+		  font-size: 16px;
+		  cursor: pointer;
+		  text-align: center;
+		}
 
-			.block:hover {
-			  background-color: #ddd;
-			  color: black;
-			}
-		</style>
+		.block:hover {
+		  background-color: #ddd;
+		  color: black;
+		}
+	</style>
 
 	</head>
 
@@ -41,18 +41,18 @@
 				<td><input id="Seat2" type="button" value="Seat 1B" onclick="seatAction(this.value);" class="block"/></td>
 				<td><input id="Seat3" type="button" value="Seat 1C" onclick="seatAction(this.value);" class="block"/></td>
 				<td>&emsp; &emsp; &emsp;</td>
-				<td><input id="Seat4" type="button" value="Seat 1A" onclick="seatAction(this.value);" class="block"/></td>
-				<td><input id="Seat5" type="button" value="Seat 1B" onclick="seatAction(this.value);" class="block"/></td>
-				<td><input id="Seat6" type="button" value="Seat 1C" onclick="seatAction(this.value);" class="block"/></td>							
+				<td><input id="Seat4" type="button" value="Seat 1D" onclick="seatAction(this.value);" class="block"/></td>
+				<td><input id="Seat5" type="button" value="Seat 1E" onclick="seatAction(this.value);" class="block"/></td>
+				<td><input id="Seat6" type="button" value="Seat 1F" onclick="seatAction(this.value);" class="block"/></td>							
 			</tr>
 			<tr>
 				<td><input id="Seat7" type="button" value="Seat 2A" onclick="seatAction(this.value);" class="block"/></td>
 				<td><input id="Seat8" type="button" value="Seat 2B" onclick="seatAction(this.value);" class="block"/></td>
 				<td><input id="Seat9" type="button" value="Seat 2C" onclick="seatAction(this.value);" class="block"/></td>
 				<td>&emsp; &emsp; &emsp;</td>
-				<td><input id="Seat10" type="button" value="Seat 2A" onclick="seatAction(this.value);" class="block"/></td>
-				<td><input id="Seat11" type="button" value="Seat 2B" onclick="seatAction(this.value);" class="block"/></td>
-				<td><input id="Seat12" type="button" value="Seat 2C" onclick="seatAction(this.value);" class="block"/></td>
+				<td><input id="Seat10" type="button" value="Seat 2D" onclick="seatAction(this.value);" class="block"/></td>
+				<td><input id="Seat11" type="button" value="Seat 2E" onclick="seatAction(this.value);" class="block"/></td>
+				<td><input id="Seat12" type="button" value="Seat 2F" onclick="seatAction(this.value);" class="block"/></td>
 			</tr>
 		</table>
 		<br><br>
@@ -91,7 +91,7 @@
 		<tr>
 			<td>
 				<br>
-				<a id="a1" download="Test.txt"> Download it! </a>
+				<center><a id="a1" download="Test.txt"> Download it! </a></center>
 			</td>
 		</tr>	
 	</table>
@@ -113,6 +113,12 @@
 			seatDiv.style.display = "block";
 			catDiv.style.display = "none";
 			eventDiv.style.display = "none";
+			
+			var today = new Date();
+			var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+			var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+			
+			dataOut=dataOut + date + "," + time + "," + ","+ "," + "," +"~New Session Start\n";
 		}
 		
 		function seatAction(buttonClicked) {
@@ -165,6 +171,8 @@
 		catDiv.style.display = "none";
 		eventDiv.style.display = "none";
 		
+		a1.download="Test_"+lineDate+"_"+lineTime+".txt"
+		
 		}
 		
 		function submitComment(comText) {
@@ -181,6 +189,7 @@
 		seatDiv.style.display = "block";
 		catDiv.style.display = "none";
 		eventDiv.style.display = "none";
+		a1.download="Test_"+lineDate+"_"+lineTime+".txt"
 		}
 		
 		const a1 = document.getElementById("a1")
