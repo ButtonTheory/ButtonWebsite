@@ -8,20 +8,31 @@
 		<style>
 		
 		table {
-		  border-collapse: collapse;
+		  border-collapse: separate;
 		  width: 100%;
-		  border: 1px solid #ddd;
+		  border: 0px solid white;
+		  border-spacing: 10px;
+		}
+		
+		td {
+			border: 0px solid white;
 		}
 
 		.block {
 		  display: block;
 		  width: 100%;
-		  border: 20px;
-		  background-color: #04AA6D;
-		  color: white;
+		  border: 10px;
+		  background-color: ##EFEFEF;
+		  color: black;
 		  padding: 14px 28px;
 		  font-size: 16px;
 		  cursor: pointer;
+		  text-align: center;
+		  border-radius: 8px;
+		}
+
+		.button {		
+		  width: 100%;		 
 		  text-align: center;
 		}
 
@@ -35,7 +46,7 @@
 
 <body>
 	<div id="seatDiv">
-		<table id="seatTable" border="2">
+		<table id="seatTable" border="2"> 
 			<tr>
 				<td><input id="Seat1" type="button" value="Seat 1A" onclick="seatAction(this.value);" class="block"/></td>
 				<td><input id="Seat2" type="button" value="Seat 1B" onclick="seatAction(this.value);" class="block"/></td>
@@ -59,11 +70,12 @@
 	</div>
 	
 	<div id="catDiv">
-		<table id="catTable" border="2" style.display="none">
+		<table id="catTable" border="2">
 			<td>
-				<tr><input id="CatA" type="button" value="CategoryA" onclick="catAction(this.value);" class="block"/></tr>
-				<tr><input id="CatB" type="button" value="CategoryB" onclick="catAction(this.value);" class="block"/></tr>
-				<tr><input id="CatC" type="button" value="CategoryC" onclick="catAction(this.value);" class="block"/></tr>
+			<!-- Update if-blocks below if changing category names!! -->
+				<tr><td colspan="2"><input id="CatA" type="button" value="CategoryA" onclick="catAction(this.value);" class="block"/></td></tr>
+				<tr><td colspan="2"><input id="CatB" type="button" value="CategoryB" onclick="catAction(this.value);" class="block"/></td></tr>
+				<tr><td colspan="2"><input id="CatC" type="button" value="CategoryC" onclick="catAction(this.value);" class="block"/></td></tr>
 				<tr>&emsp;</tr>
 				<tr><td width="99%"><input id="CommentText" type="text" style="width:100%"></td><td style="white-space: nowrap;"><input id="CommentButton" type="button" value="Comment" onclick="submitComment(CommentText.value);" style.float="right"/><td></tr>
 
@@ -73,20 +85,46 @@
 		<br><br>
 	</div>
 	
-	<div id="eventDiv">
-		<table id="eventTable" border="1">
+	<div id="eventDivA">
+		<table id="eventTableA">
 			<td>
-				<tr><input id="Ev1" type="button" value="Event 1" onclick="eventAction(this.value);" class="block"/></tr>
-				<tr><input id="Ev2" type="button" value="Event 2" onclick="eventAction(this.value);" class="block"/></tr>
-				<tr><input id="Ev3" type="button" value="Event 3" onclick="eventAction(this.value);" class="block"/></tr>
-				<tr><input id="Ev4" type="button" value="Event 4" onclick="eventAction(this.value);" class="block"/></tr>
-				<tr><input id="Ev5" type="button" value="Event 5" onclick="eventAction(this.value);" class="block"/></tr>
+				<tr><td><input id="Ev1" type="button" value="Event A1" onclick="eventAction(this.value);" class="block"/></td></tr>
+				<tr><td><input id="Ev2" type="button" value="Event A2" onclick="eventAction(this.value);" class="block"/></td></tr>
+				<tr><td><input id="Ev3" type="button" value="Event A3" onclick="eventAction(this.value);" class="block"/></td></tr>
+				<tr><td><input id="Ev4" type="button" value="Event A4" onclick="eventAction(this.value);" class="block"/></td></tr>
+				<tr><td><input id="Ev5" type="button" value="Event A5" onclick="eventAction(this.value);" class="block"/></td></tr>
 				
 				
 			</td>
 		</table>
 	</div>
 	
+	<div id="eventDivB">
+		<table id="eventTableB">
+			<td>
+				<tr><td><input id="Ev1" type="button" value="Event B1" onclick="eventAction(this.value);" class="block"/></td></tr>
+				<tr><td><input id="Ev2" type="button" value="Event B2" onclick="eventAction(this.value);" class="block"/></td></tr>
+				<tr><td><input id="Ev3" type="button" value="Event B3" onclick="eventAction(this.value);" class="block"/></td></tr>
+				<tr><td><input id="Ev4" type="button" value="Event B4" onclick="eventAction(this.value);" class="block"/></td></tr>
+				<tr><td><input id="Ev5" type="button" value="Event B5" onclick="eventAction(this.value);" class="block"/></td></tr>
+				
+				
+			</td>
+		</table>
+	</div>
+	<div id="eventDivC">
+		<table id="eventTableC">
+			<td>
+				<tr><td><input id="Ev1" type="button" value="Event C1" onclick="eventAction(this.value);" class="block"/></td></tr>
+				<tr><td><input id="Ev2" type="button" value="Event C2" onclick="eventAction(this.value);" class="block"/></td></tr>
+				<tr><td><input id="Ev3" type="button" value="Event C3" onclick="eventAction(this.value);" class="block"/></td></tr>
+				<tr><td><input id="Ev4" type="button" value="Event C4" onclick="eventAction(this.value);" class="block"/></td></tr>
+				<tr><td><input id="Ev5" type="button" value="Event C5" onclick="eventAction(this.value);" class="block"/></td></tr>
+				
+				
+			</td>
+		</table>
+	</div>
 	<table id="downloadLink" border="1" >
 		<tr>
 			<td>
@@ -112,7 +150,9 @@
 		window.onload = function(){  
 			seatDiv.style.display = "block";
 			catDiv.style.display = "none";
-			eventDiv.style.display = "none";
+			eventDivA.style.display = "none";
+			eventDivB.style.display = "none";
+			eventDivC.style.display = "none";
 			
 			var today = new Date();
 			var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
@@ -141,7 +181,9 @@
 		
 		seatDiv.style.display = "none";
 		catDiv.style.display = "block";
-		eventDiv.style.display = "none";
+		eventDivA.style.display = "none";
+		eventDivB.style.display = "none";
+		eventDivC.style.display = "none";
 		}
 		
 		function catAction(buttonClicked) {
@@ -152,8 +194,13 @@
 		
 		seatDiv.style.display = "none";
 		catDiv.style.display = "none";
-		eventDiv.style.display = "block";
-		
+		if (buttonClicked=="CategoryA") {
+			eventDivA.style.display = "block";
+		} else if (buttonClicked=="CategoryB") {
+			eventDivB.style.display = "block";
+		} else if (buttonClicked=="CategoryB") {
+			eventDivC.style.display = "block";
+		}
 		}
 		
 		function eventAction(buttonClicked) {
@@ -169,7 +216,9 @@
 		
 		seatDiv.style.display = "block";
 		catDiv.style.display = "none";
-		eventDiv.style.display = "none";
+		eventDivA.style.display = "none";
+		eventDivB.style.display = "none";
+		eventDivC.style.display = "none";
 		
 		a1.download="Test_"+lineDate+"_"+lineTime+".txt"
 		
@@ -177,7 +226,7 @@
 		
 		function submitComment(comText) {
 
-		
+		comText=comText.replace(/,/gi,"|")
 		dataOut=dataOut + lineDate + "," + lineTime + "," + lineSeat + ","+ "," + "," +comText + "\n";
 		
 		console.log("dataOut : \n" +dataOut);
@@ -188,7 +237,9 @@
 		
 		seatDiv.style.display = "block";
 		catDiv.style.display = "none";
-		eventDiv.style.display = "none";
+		eventDivA.style.display = "none";
+		eventDivB.style.display = "none";
+		eventDivC.style.display = "none";
 		a1.download="Test_"+lineDate+"_"+lineTime+".txt"
 		}
 		
